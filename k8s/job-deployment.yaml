@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jobster-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jobster
+  template:
+    metadata:
+      labels:
+        app: jobster
+    spec:
+      containers:
+        - name: jobster-pod
+        # Replace $LOCATION with your Artifact Registry location (e.g., us-west1).
+        # Replace $GCLOUD_PROJECT with your project ID.
+          image: ham14/jobster:latest
+          imagePullPolicy: Never
